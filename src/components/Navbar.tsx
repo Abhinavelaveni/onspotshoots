@@ -34,6 +34,17 @@ const Navbar = () => {
             </a>
           ))}
           <motion.a
+            href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="rounded-2xl bg-[#25D366] shadow-[0_8px_30px_-8px_rgba(37,211,102,0.4)] px-7 py-2.5 text-sm font-semibold text-primary-foreground font-body transition-all flex items-center gap-2"
+          >
+            <MessageCircle className="h-4 w-4" />
+            WhatsApp
+          </motion.a>
+          <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
