@@ -57,8 +57,8 @@ const VideoCard = ({ video, index }: { video: typeof videos[0]; index: number })
       whileHover={{ y: -10, transition: { duration: 0.3 } }}
       className="group relative"
     >
-      <div className="relative rounded-2xl overflow-hidden shadow-card shadow-card-hover transition-all duration-500 aspect-[9/14]">
-        {/* Gradient background simulating video thumbnail */}
+      <div className="relative rounded-3xl overflow-hidden shadow-card shadow-card-hover transition-all duration-500 aspect-[9/14]">
+        {/* Gradient background */}
         <div className={`absolute inset-0 bg-gradient-to-br ${video.color}`} />
 
         {/* Grid pattern overlay */}
@@ -70,28 +70,28 @@ const VideoCard = ({ video, index }: { video: typeof videos[0]; index: number })
         {/* Animated shimmer on hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer" />
 
-        {/* Play button center */}
+        {/* Play button center — glassmorphism */}
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
             whileHover={{ scale: 1.15 }}
-            className="h-14 w-14 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center border border-primary-foreground/20 group-hover:bg-primary-foreground/30 transition-all duration-300"
+            className="h-16 w-16 rounded-full bg-primary-foreground/10 backdrop-blur-xl flex items-center justify-center border border-primary-foreground/20 group-hover:bg-primary-foreground/20 transition-all duration-300 shadow-lg"
           >
             <Play className="h-6 w-6 text-primary-foreground fill-primary-foreground ml-0.5" />
           </motion.div>
         </div>
 
-        {/* Category badge */}
+        {/* Category badge — glass */}
         <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/10 px-3 py-1 text-xs font-semibold text-primary-foreground font-body">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/10 backdrop-blur-xl border border-primary-foreground/10 px-3.5 py-1.5 text-xs font-semibold text-primary-foreground font-body">
             {video.icon}
             {video.category}
           </span>
         </div>
 
-        {/* Bottom info */}
-        <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent">
+        {/* Bottom info — glass */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent">
           <h4 className="text-base font-bold text-primary-foreground font-heading">{video.title}</h4>
-          <p className="text-xs text-primary-foreground/60 font-body mt-1 line-clamp-2">{video.description}</p>
+          <p className="text-xs text-primary-foreground/60 font-body mt-1.5 line-clamp-2">{video.description}</p>
         </div>
       </div>
     </motion.div>
@@ -109,7 +109,7 @@ const VideoShowcase = () => {
   const xRight = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   return (
-    <section ref={sectionRef} id="showcase" className="py-28 relative overflow-hidden">
+    <section ref={sectionRef} id="showcase" className="py-32 md:py-40 relative overflow-hidden">
       <div className="absolute inset-0 gradient-subtle" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/[0.02] blur-[120px]" />
 
@@ -119,22 +119,20 @@ const VideoShowcase = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-4">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-5">
             Our Work
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold font-heading">
+          <h2 className="text-5xl md:text-7xl font-bold font-heading tracking-tight">
             Reels That <span className="text-gradient-primary">Stand Out</span>
           </h2>
-          <p className="mt-4 text-muted-foreground font-body text-lg max-w-lg mx-auto">
+          <p className="mt-6 text-muted-foreground font-body text-lg max-w-lg mx-auto">
             From weddings to product launches — scroll through our reel categories.
           </p>
         </motion.div>
 
-        {/* Scrolling rows */}
         <div className="space-y-8">
-          {/* Row 1 — shifts left on scroll */}
           <motion.div style={{ x: xLeft }} className="flex gap-6 justify-center">
             {videos.slice(0, 3).map((v, i) => (
               <div key={v.title} className="w-56 md:w-64 flex-shrink-0">
@@ -143,7 +141,6 @@ const VideoShowcase = () => {
             ))}
           </motion.div>
 
-          {/* Row 2 — shifts right on scroll */}
           <motion.div style={{ x: xRight }} className="flex gap-6 justify-center">
             {videos.slice(3, 6).map((v, i) => (
               <div key={v.title} className="w-56 md:w-64 flex-shrink-0">

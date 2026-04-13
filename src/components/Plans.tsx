@@ -38,8 +38,7 @@ const plans = [
 
 const Plans = () => {
   return (
-    <section id="plans" className="py-28 relative overflow-hidden">
-      {/* Subtle gradient bg */}
+    <section id="plans" className="py-32 md:py-40 relative overflow-hidden">
       <div className="absolute inset-0 gradient-subtle" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[100px]" />
 
@@ -49,20 +48,20 @@ const Plans = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-20 md:mb-24"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-4">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-5">
             Pricing
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold font-heading text-foreground">
+          <h2 className="text-5xl md:text-7xl font-bold font-heading text-foreground tracking-tight">
             Simple <span className="text-gradient-primary">Pricing</span>
           </h2>
-          <p className="mt-4 text-muted-foreground font-body text-lg max-w-md mx-auto">
+          <p className="mt-6 text-muted-foreground font-body text-lg max-w-md mx-auto">
             No hidden fees. Pick a plan that works for you.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -71,16 +70,18 @@ const Plans = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.2, duration: 0.6 }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`group relative rounded-3xl p-8 md:p-10 transition-all duration-500 ${
+              className={`group relative rounded-3xl p-8 md:p-12 transition-all duration-500 ${
                 plan.popular
-                  ? "gradient-dark text-primary-foreground shadow-2xl shadow-glow"
-                  : "bg-card border border-border shadow-card shadow-card-hover"
+                  ? "bg-foreground/[0.03] backdrop-blur-2xl border border-primary/20 text-foreground shadow-2xl shadow-glow"
+                  : "bg-primary-foreground/60 backdrop-blur-xl border border-border/50 shadow-card shadow-card-hover"
               }`}
             >
-              {/* Glow effect on popular */}
+              {/* Glass overlay */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-primary-foreground/[0.08] to-transparent pointer-events-none" />
+
               {plan.popular && (
                 <>
-                  <div className="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary/30 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary/20 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <span className="absolute -top-4 left-8 inline-flex items-center gap-1.5 rounded-full gradient-primary shadow-primary px-5 py-1.5 text-xs font-bold text-primary-foreground font-body uppercase tracking-wider">
                     <Crown className="h-3 w-3" />
                     {plan.tag}
@@ -88,31 +89,28 @@ const Plans = () => {
                 </>
               )}
 
-              {/* Card content */}
               <div className="relative">
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl mb-6 ${
-                  plan.popular ? "gradient-primary text-primary-foreground" : "bg-primary/10 text-primary"
+                <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl mb-8 ${
+                  plan.popular ? "gradient-primary text-primary-foreground shadow-primary" : "bg-primary/10 text-primary"
                 }`}>
                   {plan.icon}
                 </div>
-                <h3 className="text-2xl font-bold font-heading">{plan.name}</h3>
-                <p className={`text-sm font-medium mt-1 ${plan.popular ? "text-primary-foreground/50" : "text-muted-foreground"}`}>
+                <h3 className="text-3xl font-bold font-heading tracking-tight">{plan.name}</h3>
+                <p className="text-sm font-medium mt-1.5 text-muted-foreground">
                   {plan.subtitle}
                 </p>
-                <p className={`text-sm mt-3 leading-relaxed ${plan.popular ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
+                <p className="text-sm mt-4 leading-relaxed text-muted-foreground">
                   {plan.description}
                 </p>
 
-                <div className="my-8 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold font-heading">{plan.price}</span>
-                  <span className={`text-sm ${plan.popular ? "text-primary-foreground/40" : "text-muted-foreground"}`}>
-                    + GST
-                  </span>
+                <div className="my-10 flex items-baseline gap-1">
+                  <span className="text-6xl font-bold font-heading tracking-tight">{plan.price}</span>
+                  <span className="text-sm text-muted-foreground">+ GST</span>
                 </div>
 
-                <div className={`h-px mb-8 ${plan.popular ? "bg-primary-foreground/10" : "bg-border"}`} />
+                <div className={`h-px mb-10 ${plan.popular ? "bg-primary/15" : "bg-border"}`} />
 
-                <ul className="space-y-4 mb-10">
+                <ul className="space-y-5 mb-12">
                   {plan.features.map((f, fi) => (
                     <motion.li
                       key={f}
@@ -127,7 +125,7 @@ const Plans = () => {
                       }`}>
                         <Check className={`h-3 w-3 ${plan.popular ? "text-primary-foreground" : "text-primary"}`} />
                       </div>
-                      <span className={plan.popular ? "text-primary-foreground/80" : ""}>{f}</span>
+                      <span>{f}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -136,7 +134,7 @@ const Plans = () => {
                   href="#contact"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`block w-full text-center rounded-xl py-4 text-sm font-semibold font-body transition-all duration-300 ${
+                  className={`block w-full text-center rounded-2xl py-4.5 text-sm font-semibold font-body transition-all duration-300 ${
                     plan.popular
                       ? "gradient-primary text-primary-foreground shadow-primary hover:shadow-lg"
                       : "bg-foreground text-primary-foreground hover:bg-foreground/90"

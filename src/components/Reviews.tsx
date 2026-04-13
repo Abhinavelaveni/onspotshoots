@@ -30,7 +30,7 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-28 relative overflow-hidden">
+    <section id="reviews" className="py-32 md:py-40 relative overflow-hidden">
       <div className="absolute inset-0 gradient-red-white" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/[0.04] blur-[80px]" />
 
@@ -40,17 +40,17 @@ const Reviews = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-4">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-5">
             Testimonials
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold font-heading">
+          <h2 className="text-5xl md:text-7xl font-bold font-heading tracking-tight">
             What Our <span className="text-gradient-primary">Clients</span> Say
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {reviews.map((r, i) => (
             <motion.div
               key={r.name}
@@ -59,14 +59,15 @@ const Reviews = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.5 }}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="group relative rounded-2xl border border-border bg-card p-6 shadow-card shadow-card-hover transition-all duration-300"
+              className="group relative rounded-3xl border border-border/40 bg-primary-foreground/50 backdrop-blur-2xl p-7 shadow-card shadow-card-hover transition-all duration-300"
             >
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl gradient-card-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Glass hover glow */}
+              <div className="absolute inset-0 rounded-3xl gradient-card-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-primary-foreground/[0.06] to-transparent pointer-events-none" />
 
               <div className="relative">
-                <Quote className="h-6 w-6 text-primary/20 mb-3" />
-                <div className="flex gap-0.5 mb-4">
+                <Quote className="h-7 w-7 text-primary/15 mb-4" />
+                <div className="flex gap-0.5 mb-5">
                   {Array.from({ length: 5 }).map((_, si) => (
                     <Star
                       key={si}
@@ -74,9 +75,9 @@ const Reviews = () => {
                     />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed mb-6">"{r.text}"</p>
+                <p className="text-sm text-muted-foreground font-body leading-relaxed mb-8">"{r.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-full gradient-primary flex items-center justify-center text-xs font-bold text-primary-foreground font-heading">
+                  <div className="h-10 w-10 rounded-full gradient-primary flex items-center justify-center text-xs font-bold text-primary-foreground font-heading shadow-primary">
                     {r.name.split(" ").map(n => n[0]).join("")}
                   </div>
                   <div>
