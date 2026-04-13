@@ -1,36 +1,44 @@
 import { motion } from "framer-motion";
-import { FolderOpen, ExternalLink } from "lucide-react";
+import { FolderOpen, ExternalLink, ArrowRight } from "lucide-react";
 
 const DriveLink = () => {
   return (
-    <section className="py-16 bg-secondary">
-      <div className="container mx-auto px-6">
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 gradient-subtle" />
+      <div className="relative container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-3xl mx-auto rounded-2xl bg-card border border-border p-8"
+          whileHover={{ scale: 1.01 }}
+          className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-3xl mx-auto rounded-3xl gradient-dark p-10 shadow-2xl shadow-glow relative overflow-hidden"
         >
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-              <FolderOpen className="h-6 w-6 text-primary" />
+          {/* Decorative orbs */}
+          <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-primary/10 blur-[60px]" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-primary/5 blur-[50px]" />
+
+          <div className="relative flex items-center gap-5">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl gradient-primary shadow-primary">
+              <FolderOpen className="h-6 w-6 text-primary-foreground" />
             </div>
             <div>
-              <h3 className="text-lg font-bold font-heading">Google Drive Folder</h3>
-              <p className="text-sm text-muted-foreground font-body">
+              <h3 className="text-xl font-bold font-heading text-primary-foreground">Google Drive Folder</h3>
+              <p className="text-sm text-primary-foreground/50 font-body">
                 Access all your delivered reels in one place.
               </p>
             </div>
           </div>
-          <a
+          <motion.a
             href="https://drive.google.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground font-body transition-all hover:bg-primary/90 hover:scale-105"
+            whileHover={{ scale: 1.05, x: 4 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative inline-flex items-center gap-2 rounded-xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur-sm px-7 py-3.5 text-sm font-semibold text-primary-foreground font-body transition-all hover:border-primary/50"
           >
             Open Drive
-            <ExternalLink className="h-4 w-4" />
-          </a>
+            <ArrowRight className="h-4 w-4" />
+          </motion.a>
         </motion.div>
       </div>
     </section>

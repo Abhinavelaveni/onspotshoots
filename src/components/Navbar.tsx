@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { label: "Plans", href: "#plans" },
@@ -11,38 +12,57 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/50"
+    >
       <div className="container mx-auto px-6 flex items-center justify-between h-16">
         <a href="#" className="text-xl font-bold font-heading">
-          open<span className="text-primary">shoot</span>
+          open<span className="text-gradient-primary">shoot</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a key={l.label} href={l.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors font-body">
+            <a key={l.label} href={l.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 font-body relative group">
               {l.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 gradient-primary transition-all duration-300 group-hover:w-full rounded-full" />
             </a>
           ))}
-          <a href="#contact" className="rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground font-body hover:bg-primary/90 transition-all">
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="rounded-xl gradient-primary shadow-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground font-body transition-all"
+          >
             Book Now
-          </a>
+          </motion.a>
         </div>
         <button className="md:hidden" onClick={() => setOpen(!open)}>
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
-      {open && (
-        <div className="md:hidden border-t border-border bg-background px-6 py-4 space-y-3">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="block text-sm font-medium text-muted-foreground font-body">
-              {l.label}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl px-6 py-4 space-y-3 overflow-hidden"
+          >
+            {links.map((l) => (
+              <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="block text-sm font-medium text-muted-foreground font-body hover:text-foreground transition-colors">
+                {l.label}
+              </a>
+            ))}
+            <a href="#contact" onClick={() => setOpen(false)} className="block rounded-xl gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground font-body text-center shadow-primary">
+              Book Now
             </a>
-          ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="block rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground font-body text-center">
-            Book Now
-          </a>
-        </div>
-      )}
-    </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
