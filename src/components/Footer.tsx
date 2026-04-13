@@ -10,7 +10,7 @@ const Footer = () => (
         viewport={{ once: true }}
         className="text-2xl font-bold font-heading"
       >
-        open<span className="text-gradient-primary">shoot</span>
+        onspot<span className="text-gradient-primary">shoots</span>
       </motion.p>
       <div className="flex items-center gap-6">
         {["Plans", "Reviews", "Contact"].map((l) => (
@@ -20,7 +20,7 @@ const Footer = () => (
         ))}
       </div>
       <p className="text-sm text-muted-foreground font-body">
-        © {new Date().getFullYear()} openshoot. All rights reserved.
+        © {new Date().getFullYear()} onspotshoots. All rights reserved.
       </p>
     </div>
   </footer>

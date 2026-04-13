@@ -5,7 +5,7 @@ const reviews = [
   {
     name: "Priya Sharma",
     role: "Wedding Planner",
-    text: "OpenShoot made our event unforgettable! The reels were delivered in minutes and looked absolutely professional.",
+    text: "OnspotShoots made our event unforgettable! The reels were delivered in minutes and looked absolutely professional.",
     rating: 5,
   },
   {
