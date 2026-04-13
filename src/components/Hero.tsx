@@ -23,8 +23,8 @@ const Hero = () => {
         backgroundSize: "60px 60px"
       }} />
 
-      <div className="relative z-10 container mx-auto px-6 py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 container mx-auto px-6 py-32 md:py-40">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -34,27 +34,27 @@ const Hero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm px-5 py-2 mb-8"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md px-5 py-2 mb-8"
             >
               <Zap className="h-3.5 w-3.5 text-primary" />
               <span className="text-sm font-medium text-primary-foreground/80 font-body">Instant Reels in 10 Minutes</span>
             </motion.div>
 
-            <h1 className="text-6xl md:text-8xl font-bold font-heading text-primary-foreground leading-[0.95] tracking-tight">
-              open
-              <span className="text-gradient-primary">shoot</span>
+            <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold font-heading text-primary-foreground leading-[0.9] tracking-tighter">
+              onspot
+              <span className="text-gradient-primary">shoots</span>
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-primary-foreground/60 font-body max-w-lg leading-relaxed">
+            <p className="mt-8 text-lg md:text-xl text-primary-foreground/60 font-body max-w-lg leading-relaxed">
               Professional reels shot on the latest iPhone — edited and delivered to you in under 10 minutes. No wait, no hassle.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-12 flex flex-wrap gap-4">
               <motion.a
                 href="#plans"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-2 rounded-xl gradient-primary shadow-primary px-8 py-4 text-sm font-semibold text-primary-foreground font-body transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl gradient-primary shadow-primary px-8 py-4 text-sm font-semibold text-primary-foreground font-body transition-all"
               >
                 <Play className="h-4 w-4" />
                 View Plans
@@ -63,7 +63,7 @@ const Hero = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center rounded-xl border border-primary-foreground/15 backdrop-blur-sm px-8 py-4 text-sm font-semibold text-primary-foreground font-body transition-all hover:border-primary/50 hover:bg-primary/10"
+                className="inline-flex items-center justify-center rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur-xl px-8 py-4 text-sm font-semibold text-primary-foreground font-body transition-all hover:border-primary/50 hover:bg-primary/10"
               >
                 Book Now
               </motion.a>
@@ -74,7 +74,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="mt-14 flex gap-10"
+              className="mt-16 flex gap-12"
             >
               {[
                 { value: "10", label: "Min Delivery", suffix: "min" },
@@ -82,16 +82,16 @@ const Hero = () => {
                 { value: "4.9", label: "Rating", suffix: "★" },
               ].map((s) => (
                 <div key={s.label}>
-                  <p className="text-2xl font-bold font-heading text-primary-foreground">
+                  <p className="text-3xl font-bold font-heading text-primary-foreground">
                     {s.value}<span className="text-primary">{s.suffix}</span>
                   </p>
-                  <p className="text-xs text-primary-foreground/40 font-body mt-1">{s.label}</p>
+                  <p className="text-xs text-primary-foreground/40 font-body mt-1.5">{s.label}</p>
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right side floating card */}
+          {/* Right side glassmorphism card */}
           <motion.div
             initial={{ opacity: 0, x: 40, rotateY: -10 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
@@ -100,21 +100,21 @@ const Hero = () => {
           >
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-primary/20 blur-2xl animate-pulse-glow" />
-              <div className="relative w-72 rounded-3xl border border-primary-foreground/10 bg-primary-foreground/5 backdrop-blur-xl p-8 space-y-6">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-xl gradient-primary flex items-center justify-center">
+              <div className="relative w-80 rounded-3xl border border-primary-foreground/10 bg-primary-foreground/[0.07] backdrop-blur-2xl p-10 space-y-7 shadow-2xl">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-2xl gradient-primary flex items-center justify-center shadow-primary">
                     <Clock className="h-5 w-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-primary-foreground font-heading">Fast Delivery</p>
+                    <p className="text-base font-bold text-primary-foreground font-heading">Fast Delivery</p>
                     <p className="text-xs text-primary-foreground/50 font-body">10 mins post shoot</p>
                   </div>
                 </div>
                 <div className="h-px bg-primary-foreground/10" />
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {["Shot on iPhone 15 Pro", "Cinematic Edits", "Trending Audio"].map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    <div key={item} className="flex items-center gap-3">
+                      <div className="h-2 w-2 rounded-full bg-primary" />
                       <span className="text-sm text-primary-foreground/70 font-body">{item}</span>
                     </div>
                   ))}
@@ -127,7 +127,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };

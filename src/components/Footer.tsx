@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
 
 const Footer = () => (
-  <footer className="relative overflow-hidden border-t border-border py-12">
+  <footer className="relative overflow-hidden border-t border-border/30 py-14">
     <div className="absolute inset-0 gradient-subtle" />
-    <div className="relative container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="relative container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="text-2xl font-bold font-heading"
+        className="text-2xl font-bold font-heading tracking-tight"
       >
         onspot<span className="text-gradient-primary">shoots</span>
       </motion.p>
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-8">
         {["Plans", "Reviews", "Contact"].map((l) => (
           <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
             {l}
