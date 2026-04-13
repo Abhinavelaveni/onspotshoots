@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
-import { Play, Zap, Clock } from "lucide-react";
+import { Play, Zap, Clock, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -58,6 +58,17 @@ const Hero = () => {
               >
                 <Play className="h-4 w-4" />
                 View Plans
+              </motion.a>
+              <motion.a
+                href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#25D366] shadow-[0_8px_30px_-8px_rgba(37,211,102,0.4)] px-8 py-4 text-sm font-semibold text-primary-foreground font-body transition-all"
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Us
               </motion.a>
               <motion.a
                 href="#contact"

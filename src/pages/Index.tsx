@@ -6,6 +6,7 @@ import Reviews from "@/components/Reviews";
 import DriveLink from "@/components/DriveLink";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 
 const Index = () => (
   <div className="min-h-screen">
@@ -17,6 +18,7 @@ const Index = () => (
     <DriveLink />
     <ContactForm />
     <Footer />
+    <WhatsAppFAB />
   </div>
 );
 
