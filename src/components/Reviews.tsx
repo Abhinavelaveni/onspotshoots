@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const reviews = [
   {
@@ -30,16 +30,23 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section id="reviews" className="py-24">
-      <div className="container mx-auto px-6">
+    <section id="reviews" className="py-28 relative overflow-hidden">
+      <div className="absolute inset-0 gradient-red-white" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/[0.04] blur-[80px]" />
+
+      <div className="relative container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-heading">
-            What Our <span className="text-primary">Clients</span> Say
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-4">
+            Testimonials
+          </span>
+          <h2 className="text-4xl md:text-6xl font-bold font-heading">
+            What Our <span className="text-gradient-primary">Clients</span> Say
           </h2>
         </motion.div>
 
@@ -47,24 +54,36 @@ const Reviews = () => {
           {reviews.map((r, i) => (
             <motion.div
               key={r.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="rounded-xl border border-border bg-card p-6 hover:shadow-lg transition-shadow"
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="group relative rounded-2xl border border-border bg-card p-6 shadow-card shadow-card-hover transition-all duration-300"
             >
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: 5 }).map((_, si) => (
-                  <Star
-                    key={si}
-                    className={`h-4 w-4 ${si < r.rating ? "fill-primary text-primary" : "text-border"}`}
-                  />
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4">"{r.text}"</p>
-              <div>
-                <p className="text-sm font-semibold font-heading">{r.name}</p>
-                <p className="text-xs text-muted-foreground font-body">{r.role}</p>
+              {/* Hover glow */}
+              <div className="absolute inset-0 rounded-2xl gradient-card-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative">
+                <Quote className="h-6 w-6 text-primary/20 mb-3" />
+                <div className="flex gap-0.5 mb-4">
+                  {Array.from({ length: 5 }).map((_, si) => (
+                    <Star
+                      key={si}
+                      className={`h-4 w-4 ${si < r.rating ? "fill-primary text-primary" : "text-border"}`}
+                    />
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground font-body leading-relaxed mb-6">"{r.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-full gradient-primary flex items-center justify-center text-xs font-bold text-primary-foreground font-heading">
+                    {r.name.split(" ").map(n => n[0]).join("")}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold font-heading">{r.name}</p>
+                    <p className="text-xs text-muted-foreground font-body">{r.role}</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
