@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
-import { Play, Zap, Clock, MessageCircle } from "lucide-react";
+import { Play, Zap, Clock, MessageCircle, Smartphone } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -102,36 +102,81 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right side glassmorphism card */}
+          {/* Right side: 3D Phone Mockup */}
           <motion.div
-            initial={{ opacity: 0, x: 40, rotateY: -10 }}
+            initial={{ opacity: 0, x: 40, rotateY: -15 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="hidden lg:flex justify-center"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-primary/20 blur-2xl animate-pulse-glow" />
-              <div className="relative w-80 rounded-3xl border border-primary-foreground/10 bg-primary-foreground/[0.07] backdrop-blur-2xl p-10 space-y-7 shadow-2xl">
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-2xl gradient-primary flex items-center justify-center shadow-primary">
-                    <Clock className="h-5 w-5 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-base font-bold text-primary-foreground font-heading">Fast Delivery</p>
-                    <p className="text-xs text-primary-foreground/50 font-body">10 mins post shoot</p>
-                  </div>
-                </div>
-                <div className="h-px bg-primary-foreground/10" />
-                <div className="space-y-4">
-                  {["Shot on iPhone 15 Pro", "Cinematic Edits", "Trending Audio"].map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary" />
-                      <span className="text-sm text-primary-foreground/70 font-body">{item}</span>
+            <div className="relative" style={{ perspective: "1200px" }}>
+              {/* Phone glow */}
+              <div className="absolute -inset-8 rounded-[3rem] bg-primary/20 blur-3xl animate-pulse-glow" />
+
+              {/* 3D Phone */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
+                style={{ transformStyle: "preserve-3d", transform: "rotateY(-5deg) rotateX(2deg)" }}
+              >
+                {/* Phone frame */}
+                <div className="relative w-72 h-[580px] rounded-[2.5rem] border-[3px] border-primary-foreground/15 bg-foreground/90 shadow-2xl overflow-hidden">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-foreground rounded-b-2xl z-10" />
+
+                  {/* Screen content */}
+                  <div className="absolute inset-[3px] rounded-[2.3rem] overflow-hidden bg-gradient-to-b from-primary/20 via-foreground/95 to-foreground">
+                    {/* Fake reel UI */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                      <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center shadow-primary mb-6">
+                        <Play className="h-7 w-7 text-primary-foreground fill-primary-foreground ml-0.5" />
+                      </div>
+                      <p className="text-primary-foreground text-sm font-heading font-bold text-center">Your Reel</p>
+                      <p className="text-primary-foreground/40 text-xs font-body mt-1">Ready in 10 min</p>
+
+                      {/* Fake UI elements */}
+                      <div className="mt-8 w-full space-y-3">
+                        <div className="h-2 w-full rounded-full bg-primary-foreground/10 overflow-hidden">
+                          <motion.div
+                            animate={{ width: ["0%", "100%"] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                            className="h-full gradient-primary rounded-full"
+                          />
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="h-8 w-8 rounded-full bg-primary-foreground/10" />
+                          <div className="flex-1 space-y-1.5">
+                            <div className="h-2 w-2/3 rounded-full bg-primary-foreground/10" />
+                            <div className="h-1.5 w-1/3 rounded-full bg-primary-foreground/5" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  ))}
+
+                    {/* Side icons */}
+                    <div className="absolute right-4 bottom-24 space-y-5">
+                      {[Heart, MessageCircle, Smartphone].map((Icon, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 1 + idx * 0.2 }}
+                          className="h-10 w-10 rounded-full bg-primary-foreground/10 backdrop-blur-xl flex items-center justify-center"
+                        >
+                          <Icon className="h-4 w-4 text-primary-foreground/60" />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom bar */}
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 rounded-full bg-primary-foreground/30" />
                 </div>
-                <div className="animate-shimmer rounded-xl h-2 w-full" />
-              </div>
+
+                {/* Phone shadow */}
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-56 h-8 rounded-full bg-primary/10 blur-2xl" />
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -142,5 +187,8 @@ const Hero = () => {
     </section>
   );
 };
+
+// Need Heart for the phone mockup icons
+import { Heart } from "lucide-react";
 
 export default Hero;
