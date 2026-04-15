@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const links = [
   { label: "About", href: "#about" },
@@ -36,10 +37,10 @@ const Navbar = () => {
         <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2 group">
           {/* Logo Image */}
           <img
-            src="\src\assets\logo.png"
-            alt="onspotshoots"
-            className="h-16 lg:h-16 w-auto object-contain"
-          />
+  src={logo}
+  alt="onspotshoots"
+  className="h-16 lg:h-16 w-auto object-contain"
+/>
         </a>
 
         <div className="hidden lg:flex items-center gap-7">
