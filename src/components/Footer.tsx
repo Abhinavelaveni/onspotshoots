@@ -12,9 +12,9 @@ const Footer = () => (
       >
         onspot<span className="text-gradient-primary">shoots</span>
       </motion.p>
-      <div className="flex items-center gap-8">
-        {["Plans", "Reviews", "Contact"].map((l) => (
-          <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
+      <div className="flex items-center gap-8 flex-wrap justify-center">
+        {["About", "Why Us", "Team", "Plans", "Reviews", "Contact"].map((l) => (
+          <a key={l} href={`#${l.toLowerCase().replace(" ", "-")}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors font-body">
             {l}
           </a>
         ))}

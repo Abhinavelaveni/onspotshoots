@@ -46,7 +46,7 @@ const Reviews = () => {
             Testimonials
           </span>
           <h2 className="text-5xl md:text-7xl font-bold font-heading tracking-tight">
-            What Our <span className="text-gradient-primary">Clients</span> Say
+            What Our Loving <span className="text-gradient-primary">Customers</span> Say
           </h2>
         </motion.div>
 
@@ -61,7 +61,6 @@ const Reviews = () => {
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
               className="group relative rounded-3xl border border-border/40 bg-primary-foreground/50 backdrop-blur-2xl p-7 shadow-card shadow-card-hover transition-all duration-300"
             >
-              {/* Glass hover glow */}
               <div className="absolute inset-0 rounded-3xl gradient-card-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-primary-foreground/[0.06] to-transparent pointer-events-none" />
 
