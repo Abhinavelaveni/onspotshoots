@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, Sparkles, Crown } from "lucide-react";
+import { Check, Sparkles, Crown, MessageCircle } from "lucide-react";
 
 const plans = [
   {
@@ -12,9 +12,9 @@ const plans = [
     features: [
       "2 Edited Reels",
       "Shot on Latest iPhone",
-      "Fast Delivery (10 mins post shoot)",
-      "Trained and Certified Reel Maker",
-      "onspotshoots Branding Included",
+      "Fast Delivery (10 mins)",
+      "Trained Reel Maker",
+      "onspotshoots Branding",
     ],
     popular: false,
   },
@@ -22,133 +22,123 @@ const plans = [
     name: "Premium",
     subtitle: "Full-Day Plan",
     tag: "Most Popular",
-    description: "Ideal for events and creators who need more time and more content.",
+    description: "More time, more reels, more content for your event.",
     price: "₹2,999",
     icon: <Crown className="h-5 w-5" />,
     features: [
       "3 Edited Reels",
       "Shot on Latest iPhone",
-      "Fast Delivery (10 mins post shoot)",
-      "Trained and Certified Reel Maker",
-      "onspotshoots Branding Included",
+      "Fast Delivery (10 mins)",
+      "Trained Reel Maker",
+      "onspotshoots Branding",
     ],
     popular: true,
   },
 ];
 
-const Plans = () => {
-  return (
-    <section id="plans" className="py-32 md:py-40 relative overflow-hidden">
-      <div className="absolute inset-0 gradient-subtle" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[100px]" />
+const Plans = () => (
+  <section id="plans" className="section-white py-24 md:py-32">
+    <div className="container mx-auto px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
+      >
+        <span className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-4">
+          Pricing
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold font-heading text-foreground tracking-tight">
+          Simple, Transparent <span className="text-gradient-primary">Pricing</span>
+        </h2>
+        <p className="mt-4 text-muted-foreground font-body text-base max-w-md mx-auto">
+          No hidden fees. Pick a plan that works for you.
+        </p>
+      </motion.div>
 
-      <div className="relative container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20 md:mb-24"
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-primary uppercase tracking-wider font-body mb-5">
-            Pricing
-          </span>
-          <h2 className="text-5xl md:text-7xl font-bold font-heading text-foreground tracking-tight">
-            Simple <span className="text-gradient-primary">Pricing</span>
-          </h2>
-          <p className="mt-6 text-muted-foreground font-body text-lg max-w-md mx-auto">
-            No hidden fees. Pick a plan that works for you.
-          </p>
-        </motion.div>
+      <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {plans.map((plan, i) => (
+          <motion.div
+            key={plan.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15, duration: 0.5 }}
+            whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            className={`group relative rounded-2xl p-8 transition-all duration-300 ${
+              plan.popular
+                ? "border-2 border-secondary bg-background shadow-lg shadow-secondary/10"
+                : "border border-border bg-background shadow-card hover:shadow-card-hover"
+            }`}
+          >
+            {plan.popular && (
+              <span className="absolute -top-3.5 left-6 inline-flex items-center gap-1 rounded-full gradient-secondary shadow-secondary px-4 py-1 text-xs font-bold text-foreground font-body uppercase tracking-wider">
+                <Crown className="h-3 w-3" />
+                {plan.tag}
+              </span>
+            )}
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
-          {plans.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2, duration: 0.6 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`group relative rounded-3xl p-8 md:p-12 transition-all duration-500 ${
-                plan.popular
-                  ? "bg-foreground/[0.03] backdrop-blur-2xl border border-primary/20 text-foreground shadow-2xl shadow-glow"
-                  : "bg-primary-foreground/60 backdrop-blur-xl border border-border/50 shadow-card shadow-card-hover"
-              }`}
-            >
-              {/* Glass overlay */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-primary-foreground/[0.08] to-transparent pointer-events-none" />
+            <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl mb-5 ${
+              plan.popular ? "gradient-primary text-primary-foreground shadow-primary" : "bg-primary/10 text-primary"
+            }`}>
+              {plan.icon}
+            </div>
+            <h3 className="text-2xl font-bold font-heading">{plan.name}</h3>
+            <p className="text-sm text-muted-foreground font-body mt-1">{plan.subtitle}</p>
+            <p className="text-sm text-muted-foreground font-body mt-3">{plan.description}</p>
 
-              {plan.popular && (
-                <>
-                  <div className="absolute -inset-px rounded-3xl bg-gradient-to-b from-primary/20 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <span className="absolute -top-4 left-8 inline-flex items-center gap-1.5 rounded-full gradient-primary shadow-primary px-5 py-1.5 text-xs font-bold text-primary-foreground font-body uppercase tracking-wider">
-                    <Crown className="h-3 w-3" />
-                    {plan.tag}
-                  </span>
-                </>
-              )}
+            <div className="my-7 flex items-baseline gap-1">
+              <span className="text-5xl font-bold font-heading tracking-tight">{plan.price}</span>
+              <span className="text-sm text-muted-foreground font-body">+ GST</span>
+            </div>
 
-              <div className="relative">
-                <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl mb-8 ${
-                  plan.popular ? "gradient-primary text-primary-foreground shadow-primary" : "bg-primary/10 text-primary"
-                }`}>
-                  {plan.icon}
-                </div>
-                <h3 className="text-3xl font-bold font-heading tracking-tight">{plan.name}</h3>
-                <p className="text-sm font-medium mt-1.5 text-muted-foreground">
-                  {plan.subtitle}
-                </p>
-                <p className="text-sm mt-4 leading-relaxed text-muted-foreground">
-                  {plan.description}
-                </p>
+            <div className="h-px bg-border mb-7" />
 
-                <div className="my-10 flex items-baseline gap-1">
-                  <span className="text-6xl font-bold font-heading tracking-tight">{plan.price}</span>
-                  <span className="text-sm text-muted-foreground">+ GST</span>
-                </div>
+            <p className="text-xs font-bold font-heading uppercase tracking-wider text-foreground mb-4">What's Included</p>
+            <ul className="space-y-3 mb-8">
+              {plan.features.map((f) => (
+                <li key={f} className="flex items-center gap-2.5 text-sm font-body">
+                  <div className={`flex h-5 w-5 items-center justify-center rounded-full flex-shrink-0 ${
+                    plan.popular ? "bg-success/10 text-success" : "bg-primary/10 text-primary"
+                  }`}>
+                    <Check className="h-3 w-3" />
+                  </div>
+                  {f}
+                </li>
+              ))}
+            </ul>
 
-                <div className={`h-px mb-10 ${plan.popular ? "bg-primary/15" : "bg-border"}`} />
-
-                <ul className="space-y-5 mb-12">
-                  {plan.features.map((f, fi) => (
-                    <motion.li
-                      key={f}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.2 + fi * 0.05 }}
-                      className="flex items-start gap-3 text-sm font-body"
-                    >
-                      <div className={`flex h-5 w-5 items-center justify-center rounded-full flex-shrink-0 mt-0.5 ${
-                        plan.popular ? "gradient-primary" : "bg-primary/10"
-                      }`}>
-                        <Check className={`h-3 w-3 ${plan.popular ? "text-primary-foreground" : "text-primary"}`} />
-                      </div>
-                      <span>{f}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                <motion.a
-                  href="#contact"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`block w-full text-center rounded-2xl py-4.5 text-sm font-semibold font-body transition-all duration-300 ${
-                    plan.popular
-                      ? "gradient-primary text-primary-foreground shadow-primary hover:shadow-lg"
-                      : "bg-foreground text-primary-foreground hover:bg-foreground/90"
-                  }`}
-                >
-                  Book Now
-                </motion.a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            <div className="space-y-3">
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={`block w-full text-center rounded-xl py-3.5 text-sm font-semibold font-body transition-all ${
+                  plan.popular
+                    ? "gradient-primary text-primary-foreground shadow-primary"
+                    : "bg-foreground text-background hover:bg-foreground/90"
+                }`}
+              >
+                Book Now
+              </motion.a>
+              <motion.a
+                href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-2 w-full text-center rounded-xl py-3 text-sm font-semibold font-body border border-[#25D366] text-[#25D366] hover:bg-[#25D366]/5 transition-all"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Book via WhatsApp
+              </motion.a>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Plans;
