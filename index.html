@@ -3,20 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>onspotshoots – Instant Reels in 10 Minutes</title>
+    
+    <!-- Animated Title with JavaScript -->
+    <title>Onspotshoots</title>
+    
+    <!-- Title Animation Script -->
+    <script>
+      (function() {
+        // Animated title effect - changes text periodically
+        const titles = [
+          "⚡ Ospotshoots",
+          "🎬 Instant Reels",
+          "📱 10 Min Delivery",
+          "✨ Onspotshoots"
+        ];
+        
+        let index = 0;
+        const originalTitle = "Onspotshoots";
+        
+        setInterval(() => {
+          index = (index + 1) % titles.length;
+          document.title = titles[index];
+        }, 3000);
+        
+        // Optional: Blink effect when tab is inactive
+        let isActive = true;
+        let blinkInterval;
+        
+        window.addEventListener('blur', () => {
+          isActive = false;
+          let blinkCount = 0;
+          blinkInterval = setInterval(() => {
+            if (blinkCount >= 4 || isActive) {
+              clearInterval(blinkInterval);
+              document.title = originalTitle;
+              return;
+            }
+            document.title = blinkCount % 2 === 0 ? "🔴 onspotshoots" : "⚡ Book Now!";
+            blinkCount++;
+          }, 500);
+        });
+        
+        window.addEventListener('focus', () => {
+          isActive = true;
+          clearInterval(blinkInterval);
+          document.title = originalTitle;
+        });
+      })();
+    </script>
+    
     <meta name="description" content="onspotshoots – Professional instant reels shot and edited within 10 minutes at your event." />
-    <meta name="author" content="Lovable" />
-
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta name="author" content="onspotshoots" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="onspotshoots – Instant Reels in 10 Minutes" />
+    <meta property="og:description" content="Professional instant reels shot and edited within 10 minutes at your event." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://onspotshoots.com" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
+    
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="onspotshoots – Instant Reels in 10 Minutes" />
+    <meta name="twitter:description" content="Professional instant reels shot and edited within 10 minutes at your event." />
+    <meta name="twitter:image" content="/twitter-image.png" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <style>
+      /* Optional: Add fade-in animation for the page */
+      body {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
 
   <body>
