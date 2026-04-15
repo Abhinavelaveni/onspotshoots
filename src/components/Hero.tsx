@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
-import { Play, Zap, Clock, MessageCircle, Smartphone } from "lucide-react";
+import { Play, Zap, Clock, MessageCircle, Smartphone, Heart } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -187,8 +187,5 @@ const Hero = () => {
     </section>
   );
 };
-
-// Need Heart for the phone mockup icons
-import { Heart } from "lucide-react";
 
 export default Hero;
