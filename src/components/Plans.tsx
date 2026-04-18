@@ -37,7 +37,7 @@ const plans = [
 ];
 
 const Plans = () => (
-  <section id="plans" className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0D0507 0%, #000000 100%)" }}>
+  <section id="plans" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0D0507 0%, #000000 100%)" }}>
     {/* Animated background blobs */}
     <div className="absolute inset-0">
       <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-red-500/5 rounded-full blur-2xl animate-pulse"></div>
@@ -131,7 +131,7 @@ const Plans = () => (
                 Book Now
               </motion.a>
               <motion.a
-                href="https://wa.me/8008254573?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
+                href="https://wa.me/918008254573?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}

@@ -51,14 +51,14 @@ const AboutUs = () => {
     offset: ["start end", "end start"]
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.98, 1, 1, 0.98]);
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="py-32 relative overflow-hidden"
+      className="py-24 md:py-32 relative overflow-hidden"
       style={{ background: "radial-gradient(ellipse at 30% 40%, #1A080C 0%, #000000 100%)" }}
     >
       {/* Animated background elements */}
@@ -115,10 +115,11 @@ const AboutUs = () => {
           >
             {/* Badge with animation - centered on mobile */}
             <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "auto" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              style={{ transformOrigin: "left" }}
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500/20 to-red-600/10 border border-red-500/30 px-4 py-1.5 mb-6 overflow-hidden mx-auto lg:mx-0"
             >
               <motion.div
@@ -212,12 +213,12 @@ const AboutUs = () => {
               {highlights.map((item, i) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, rotateY: 90 }}
-                  whileInView={{ opacity: 1, rotateY: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.6, type: "spring", stiffness: 100 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="relative group [perspective:1000px]"
+                  initial={{ opacity: 0, rotateY: 30, y: 40 }}
+                  whileInView={{ opacity: 1, rotateY: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ delay: i * 0.1, duration: 0.8, type: "spring", stiffness: 80, damping: 15 }}
+                  whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+                  className="relative group [perspective:2000px]"
                 >
                   {/* 3D Card */}
                   <div className="relative rounded-2xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 p-5 md:p-6 transition-all duration-300 group-hover:border-red-500/40 overflow-hidden">

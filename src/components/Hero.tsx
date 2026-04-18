@@ -49,7 +49,7 @@ const Hero = () => (
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-[#C8102E]/10" />
     </div>
 
-    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 md:pt-36 md:pb-28">
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
       <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
         {/* Left content */}
         <motion.div
@@ -101,7 +101,7 @@ const Hero = () => (
             </motion.a>
 
             <motion.a
-              href="https://wa.me/8008254573?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
+              href="https://wa.me/918008254573?text=Hi%2C%20I%20want%20to%20book%20a%20shoot!"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}

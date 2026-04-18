@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
     <section
       ref={sectionRef}
       id="why-us"
-      className="py-32 relative overflow-hidden"
+      className="py-24 md:py-32 relative overflow-hidden"
       style={{ background: "radial-gradient(circle at 20% 80%, #0D0507 0%, #000000 100%)" }}
     >
       {/* Animated background elements */}

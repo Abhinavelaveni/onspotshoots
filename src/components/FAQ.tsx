@@ -15,7 +15,7 @@ const FAQ = () => {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0A0A0A 0%, #0D0507 100%)" }}>
+    <section id="faq" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0A0A0A 0%, #0D0507 100%)" }}>
       {/* Animated background blobs */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-40 h-40 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>

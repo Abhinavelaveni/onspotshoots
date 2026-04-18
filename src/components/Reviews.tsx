@@ -9,7 +9,7 @@ const reviews = [
 ];
 
 const Reviews = () => (
-  <section id="reviews" className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #000000 0%, #0D0507 100%)" }}>
+  <section id="reviews" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #000000 0%, #0D0507 100%)" }}>
     {/* Animated background blobs */}
     <div className="absolute inset-0">
       <div className="absolute top-1/3 right-1/4 w-40 h-40 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>

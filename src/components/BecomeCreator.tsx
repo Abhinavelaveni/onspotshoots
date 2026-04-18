@@ -116,7 +116,7 @@ const BecomeCreator = () => {
   const inputClass = "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#C8102E]/50 focus:ring-1 focus:ring-[#C8102E]/50 transition-all duration-300 outline-none text-white placeholder:text-gray-500 text-sm";
 
   return (
-    <section id="become-creator" className="py-24 relative overflow-hidden" style={{ background: "radial-gradient(circle at 80% 20%, #1A080C 0%, #000000 100%)" }}>
+    <section id="become-creator" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "radial-gradient(circle at 80% 20%, #1A080C 0%, #000000 100%)" }}>
       {/* Background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-[120px] animate-pulse" />

@@ -149,7 +149,7 @@ const ContactForm = () => {
   const inputClass = "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#C8102E]/50 focus:ring-1 focus:ring-[#C8102E]/50 transition-all duration-300 outline-none text-white placeholder:text-gray-500 text-sm";
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #000000 0%, #0D0507 100%)" }}>
+    <section id="contact" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #000000 0%, #0D0507 100%)" }}>
       {/* Animated background blobs */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-red-500/5 rounded-full blur-2xl animate-pulse"></div>

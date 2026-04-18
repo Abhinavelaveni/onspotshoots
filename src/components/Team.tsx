@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import creatorImg1 from "@/assets/creators/img1.png";
+import creatorImg2 from "@/assets/creators/img2.png";
+import creatorImg3 from "@/assets/creators/img3.png";
+import creatorImg4 from "@/assets/creators/img4.png";
+import creatorImg5 from "@/assets/creators/img5.png";
 
 const team = [
-  { name: "Vinay Dudam", role: "Founder & CEO", desc: "Trained and Certified Reel Maker with 5+ years of experience in cinematography.", image: "/Vinay.PNG", initials: "VD" },
-  { name: "Rahul Kapoor", role: "Creative Director", desc: "Expert in cinematic directing and storytelling. Has directed 200+ successful reels.", initials: "RK" },
-  { name: "Sneha Verma", role: "Lead Editor", desc: "Specialist in cinematic transitions and trending effects. Adobe Premiere Pro certified.", initials: "SV" },
-  { name: "Arjun Patel", role: "Reel Maker", desc: "Certified professional focusing on high-energy events and wedding cinematography.", initials: "AP" },
-  { name: "Divya Sharma", role: "Content Strategist", desc: "Ensures every reel has the potential to go viral with trend research.", initials: "DS" },
-  { name: "Priya Mehta", role: "Reel Maker", desc: "Specializes in candid moments and natural lighting photography.", initials: "PM" },
-  { name: "Kunal Desai", role: "Motion Graphics Artist", desc: "Creates stunning animations and text overlays for reels.", initials: "KD" },
-  { name: "Neha Gupta", role: "Client Relations", desc: "Ensures smooth communication and booking process for all clients.", initials: "NG" },
+  { name: "Sri Vardhan", role: "Founder & CEO", image: creatorImg1, initials: "VD" },
+  { name: "Malli Karjun", role: "Creator", image: creatorImg2, initials: "RK" },
+  { name: "Akhil", role: "Creator", image: creatorImg3, initials: "SV" },
+  { name: "Varshith", role: "Creator", image: creatorImg4, initials: "AP" },
+  { name: "Sai", role: "Creator", image: creatorImg5, initials: "DS" },
 ];
 
 const Team = () => {
@@ -28,7 +30,7 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #000000 0%, #0D0507 100%)" }}>
+    <section id="team" className="py-24 md:py-32 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #000000 0%, #0D0507 100%)" }}>
       {/* Animated background blobs */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-red-500/5 rounded-full blur-2xl animate-pulse"></div>
@@ -78,7 +80,7 @@ const Team = () => {
         {/* Scrollable Cards Container */}
         <div
           ref={scrollContainerRef}
-          className="overflow-x-auto scrollbar-hide pb-8"
+          className="overflow-x-auto scrollbar-hide pt-12 pb-8"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -124,7 +126,7 @@ const Team = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover rounded-xl grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                         style={{ objectPosition: 'center center' }}
                       />
                     ) : (
@@ -151,8 +153,7 @@ const Team = () => {
                     <h3 className="text-xl font-bold text-white mb-1 font-heading group-hover:text-red-400 transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <p className="text-red-400 font-semibold mb-2 text-sm font-body">{member.role}</p>
-                    <p className="text-gray-400 text-xs font-body leading-relaxed line-clamp-3">{member.desc}</p>
+                    <p className="text-red-400 font-semibold text-sm font-body">{member.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -160,17 +161,7 @@ const Team = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-6"
-        >
-          <p className="text-xs text-gray-500 font-body">
-            ← Scroll or use buttons to see more team members →
-          </p>
-        </motion.div>
+
       </div>
     </section>
   );
