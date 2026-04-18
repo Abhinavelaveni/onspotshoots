@@ -43,7 +43,7 @@ const BecomeCreator = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 🔴 REPLACE THIS WITH YOUR ACTUAL FORMSPREE ENDPOINT
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqewavrl";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwvaozlr";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

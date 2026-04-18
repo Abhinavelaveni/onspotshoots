@@ -28,8 +28,13 @@ const ContactForm = () => {
   ];
 
   const cities = [
-    "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai",
-    "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Other"
+    "Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon",
+    "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam",
+    "Kumuram Bheem Asifabad", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak",
+    "Medchal-Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet",
+    "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy",
+    "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy",
+    "Warangal", "Warangal Urban", "Yadadri Bhuvanagiri", "Other"
   ];
 
   const plans = [
@@ -39,7 +44,7 @@ const ContactForm = () => {
   ];
 
   // 🔴 REPLACE THIS WITH YOUR ACTUAL FORMSPREE ENDPOINT
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqewavrl";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzdaykb";
 
   useEffect(() => {
     const handlePlanSelected = (e: Event) => {
