@@ -93,10 +93,6 @@ const ContactForm = () => {
       toast.error("Please select the date of occasion");
       return;
     }
-    if (!form.plan.trim()) {
-      toast.error("Please select a plan");
-      return;
-    }
 
     setIsSubmitting(true);
 
@@ -364,7 +360,7 @@ const ContactForm = () => {
               {/* Plan Dropdown */}
               <div className="space-y-4 mt-4">
                 <label className="block text-sm font-medium text-gray-300 font-body">
-                  Selected Plan <span className="text-red-500">*</span>
+                  Selected Plan
                 </label>
                 <div className="relative">
                   <Package className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
