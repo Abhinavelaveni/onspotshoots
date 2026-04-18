@@ -28,13 +28,7 @@ const ContactForm = () => {
   ];
 
   const cities = [
-    "Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon",
-    "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam",
-    "Kumuram Bheem Asifabad", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak",
-    "Medchal-Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet",
-    "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy",
-    "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy",
-    "Warangal", "Warangal Urban", "Yadadri Bhuvanagiri", "Other"
+    "Karimnagar", "Ramagundam", "Peddapalli", "Jagtial", "Sircilla", "Manthani", "Huzurabad", "Koratla", "Vemulawada", "Godavarikhani", "Other"
   ];
 
   const plans = [
@@ -97,6 +91,10 @@ const ContactForm = () => {
     }
     if (!form.occasionDate) {
       toast.error("Please select the date of occasion");
+      return;
+    }
+    if (!form.plan.trim()) {
+      toast.error("Please select a plan");
       return;
     }
 
@@ -366,7 +364,7 @@ const ContactForm = () => {
               {/* Plan Dropdown */}
               <div className="space-y-4 mt-4">
                 <label className="block text-sm font-medium text-gray-300 font-body">
-                  Selected Plan <span className="text-gray-500 text-xs">(Optional)</span>
+                  Selected Plan <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <Package className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
