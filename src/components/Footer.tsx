@@ -24,7 +24,7 @@ const Footer = () => (
           <p>
             A product of{" "}
             <a
-              href="https://www.konchamkode.com/"
+              href="https://www.instagram.com/abhiiiinxv/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
