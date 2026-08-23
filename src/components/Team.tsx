@@ -12,7 +12,6 @@ const team = [
   { name: "Malli Karjun", role: "Creator", image: creatorImg2, initials: "RK" },
   { name: "Akhil", role: "Creator", image: creatorImg3, initials: "SV" },
   { name: "Varshith", role: "Creator", image: creatorImg4, initials: "AP" },
-  { name: "Sai", role: "Creator", image: creatorImg5, initials: "DS" },
 ];
 
 const Team = () => {
